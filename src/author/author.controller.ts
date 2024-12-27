@@ -2,6 +2,8 @@ import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
 import { AuthorService } from './author.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { AuthLoginDto } from './dto/author.login.dto';
+import { Get } from '@nestjs/common';
+import { Param } from '@nestjs/common';
 
 @Controller('author')
 export class AuthorController {
@@ -21,4 +23,9 @@ export class AuthorController {
         }
         return this.authService.login(author);
     }
+
+    @Get(':authorId/books')
+    async books(@Param('authorId') authorId){
+        return await this.authService.getBooks(authorId);
+    }    
 }

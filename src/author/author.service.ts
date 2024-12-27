@@ -31,7 +31,14 @@ export class AuthorService {
       async login(author: any) {
         const payload = { email: author.email, sub: author.id };
         return {
-          access_token: this.jwtService.sign(payload),
+            ...author,
+            access_token: this.jwtService.sign(payload),
         };
       }
+
+      async getBooks(authorId){
+        return this.prisma.book.findMany({
+            where: {authorId}
+        });
+    }
 }
