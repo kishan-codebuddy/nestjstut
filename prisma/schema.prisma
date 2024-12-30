@@ -10,8 +10,9 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = "mongodb://localhost:27017/nesttut"
+  url      = "mongodb+srv://kishan_user:Kishan%401998@cluster-notorous.nlsso.mongodb.net/nesttut"
 }
+
 
 model Author {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
